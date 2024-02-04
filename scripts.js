@@ -1,29 +1,43 @@
 // Create an array with the choices
-const choices = ["Rock", "Paper", "Scissors"];
+const computerChoices = ["Rock", "Paper", "Scissors"];
 
 // Get a random choice for the computer from the array
 function getComputerChoice() {
-    let index = Math.floor(Math.random() * choices.length);
-    return choices[index];
+    let index = Math.floor(Math.random() * computerChoices.length);
+    return computerChoices[index];
 }
 
 function getPlayerChoice() {
-    let playerChoice = prompt("Pick one: Rock, Paper, Scissors");
-    let lowerCase = playerChoice.toLowerCase();
+    let playerInput = prompt("Pick one: Rock, Paper, Scissors");
+    let lowerCase = playerInput.toLowerCase();
     let firstLetter = lowerCase.slice(0, 1);
     let capitalLetter = firstLetter.toUpperCase();
     let remainingLetters = lowerCase.slice(1);
-    let word = capitalLetter + remainingLetters;
-    return word;
+    let playerChoice = capitalLetter + remainingLetters;
+    return playerChoice;
 }
-
-// console.log(getComputerChoice());
-
 
 function playRound(playerSelection, computerSelection) {
-    console.log(playerSelection);
-    console.log(computerSelection);
+    let answer = ""
+    if ((playerSelection == "Rock" && computerSelection == "Rock")
+        || (playerSelection == "Paper" && computerSelection == "Paper")
+        || (playerSelection == "Scissors" && computerSelection == "Scissors")) {
+        answer = `It's a Tie! ${playerSelection} equals ${computerSelection}`
+    } else if ((playerSelection == "Rock" && computerSelection == "Paper")
+        || (playerSelection == "Paper" && computerSelection == "Scissors")
+        || (playerSelection == "Scissors" && computerSelection == "Rock")) {
+        answer = `You Lose! ${playerSelection} is beaten by ${computerSelection}`
+    } else if ((playerSelection == "Rock" && computerSelection == "Scissors")
+        || (playerSelection == "Paper" && computerSelection == "Rock")
+        || (playerSelection == "Scissors" && computerSelection == "Paper")) {
+        answer = `You WIN! ${playerSelection} beats ${computerSelection}`
+    }
+    
+    return answer;
+    
 }
+
+
 
 const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
