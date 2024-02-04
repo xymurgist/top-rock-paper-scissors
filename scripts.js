@@ -9,7 +9,12 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let playerChoice = prompt("Pick one: Rock, Paper, Scissors");
-    return playerChoice;
+    let lowerCase = playerChoice.toLowerCase();
+    let firstLetter = lowerCase.slice(0, 1);
+    let capitalLetter = firstLetter.toUpperCase();
+    let remainingLetters = lowerCase.slice(1);
+    let word = capitalLetter + remainingLetters;
+    return word;
 }
 
 // console.log(getComputerChoice());
